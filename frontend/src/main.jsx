@@ -18,9 +18,9 @@ const router= createBrowserRouter(
       <Route path='/' element={<BlogList/>}/>
       <Route path='/post' element={<CreateBlog/>} />
       <Route path='/contact-us' element={<Contactus/>} />
-      <Route path='/blog-details/:userid' element={<BlogDetails/>} />
+      <Route path='/blog-details/:id' element={<BlogDetails/>} />
       <Route path='/author' element={<Author/>} />
-      <Route path='/comments' element={<Comments/>} />
+      <Route path='/commentpost' element={<Comments/>} />
       {/* <Route 
       loader={}
       path='' 

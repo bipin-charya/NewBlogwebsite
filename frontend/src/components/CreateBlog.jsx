@@ -26,18 +26,19 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function CreateBlog() {
+
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit =  (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        axios.post('/api/blog/post', { title, content })
+        await axios.post('/api/blog/post', { title, content})
         .then(response=>{
             toast.success('Blog post created successfully!')
-            // navigate('/') // Redirect to the blog listing page
+            navigate('/') // Redirect to the blog listing page
             console.log('Blog created:', response.data)
+            
         }) 
         .catch(error=>{
             toast.error('Failed to create blog post');

@@ -53,12 +53,12 @@ export default function Header() {
                             </li>
                             <li>
                                 <NavLink
-                                to="/blogs"
+                                to="/comments"
                                     className={({isActive}) =>
                                         `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-750":"text-green-750"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
                                 >
-                                    Blogs
+                                    Comments
                                 </NavLink>
                             </li>
                             <li>
@@ -78,7 +78,7 @@ export default function Header() {
                                         `block py-2 pr-4 pl-3 duration-200 ${isActive ? "text-orange-750":"text-green-750"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
                                 >
-                                    Author
+                                    Authors
                                 </NavLink>
                             </li>
                             
