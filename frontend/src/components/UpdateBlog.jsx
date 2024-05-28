@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 
 function UpdateBlog() {
@@ -8,13 +8,29 @@ function UpdateBlog() {
     const [title, setTitle]= useState('')
     const [content, setContent] = useState('')
 
-    const {blog_id}= useParams()
+
+    const {id}= useParams()
+    const nav = useNavigate()
+
+
+    useEffect(() => {
+        axios.get(`api/blog/blog-details/${id}`)
+          .then((response) => {
+            setTitle(response.data.title)
+            setContent(response.data.content)
+          })
+          .catch((error) => {
+            console.error(error);
+          });  
+      }, [id]);
 
     const handleUpdate = async (e)=>{
-        await axios.put(`/api/blog/update/${blog_id}`, { title, content })
+        e.preventDefault()
+        await axios.put(`/api/blog/update/${id}`, { title, content })
                 .then((response)=>{
                     toast.success("blog updated successfully")
                     console.log(response.data)
+                    nav(`/blog-details/${id}`)
                 })
                 .catch((error)=>{
                     toast.error("failed to update blog")
@@ -23,9 +39,7 @@ function UpdateBlog() {
 
     }
 
-    // useEffect(()=>{
-        
-    // },[id])
+    
   
     return (
     <div className="container mx-auto p-4">
